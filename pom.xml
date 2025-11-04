@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.micronaut.platform</groupId>
+        <artifactId>micronaut-parent</artifactId>
+        <version>4.10.1</version>
+    </parent>
+
+    <groupId>com.evolvedbinary.dasp</groupId>
+    <artifactId>webapi-micronaut-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>DASP Elemental Web API with Micronaut</name>
+    <description>Example Web API built with Elemental and Micronaut</description>
+    <url>https://github.com/evolvedbinary/elemental-dasp-webapi-micronaut-example</url>
+
+    <organization>
+        <name>Evolved Binary</name>
+        <url>https://www.evolvedbinary.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://opensource.org/license/apache-2-0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/evolvedbinary/elemental-dasp-webapi-micronaut-example.git</url>
+        <connection>scm:git:https://github.com/evolvedbinary/elemental-dasp-webapi-micronaut-example.git</connection>
+        <developerConnection>scm:git:https://github.com/evolvedbinary/elemental-dasp-webapi-micronaut-example.git
+        </developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/evolvedbinary/elemental-dasp-webapi-micronaut-example/issues</url>
+    </issueManagement>
+
+    <properties>
+        <packaging>jar</packaging>
+        <jdk.version>25</jdk.version>
+        <release.version>25</release.version>
+        <micronaut.version>4.10.1</micronaut.version>
+        <micronaut.runtime>netty</micronaut.runtime>
+        <micronaut.aot.enabled>false</micronaut.aot.enabled>
+        <micronaut.aot.packageName>com.evolvedbinary.dasp.aot.generated</micronaut.aot.packageName>
+        <exec.mainClass>com.evolvedbinary.dasp.Application</exec.mainClass>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>xyz.elemental.fork.org.exist-db</groupId>
+            <artifactId>exist-core</artifactId>
+            <version>7.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.evolvedbinary.j8fu</groupId>
+            <artifactId>j8fu</artifactId>
+            <version>1.24.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.jaxrs</groupId>
+            <artifactId>micronaut-jaxrs-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.serde</groupId>
+            <artifactId>micronaut-serde-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.20.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micronaut.xml</groupId>
+            <artifactId>micronaut-jackson-xml</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-client</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.jaxrs</groupId>
+            <artifactId>micronaut-jaxrs-processor</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.micronaut</groupId>
+                    <artifactId>micronaut-inject</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.test</groupId>
+            <artifactId>micronaut-test-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.micronaut.maven</groupId>
+                <artifactId>micronaut-maven-plugin</artifactId>
+                <configuration>
+                    <configFile>aot-${packaging}.properties</configFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Uncomment to enable incremental compilation -->
+                    <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+
+                    <annotationProcessorPaths combine.children="append">
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-http-validation</artifactId>
+                            <version>${micronaut.core.version}</version>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut.jaxrs</groupId>
+                            <artifactId>micronaut-jaxrs-processor</artifactId>
+                            <version>${micronaut.jaxrs.version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-inject</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut.serde</groupId>
+                            <artifactId>micronaut-serde-processor</artifactId>
+                            <version>${micronaut.serialization.version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-inject</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Amicronaut.processing.group=com.evolvedbinary.dasp</arg>
+                        <arg>-Amicronaut.processing.module=webapi-micronaut-example</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
