@@ -54,11 +54,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>xyz.elemental.fork.org.exist-db</groupId>
-            <artifactId>exist-core</artifactId>
-            <version>7.4.1</version>
-        </dependency>
 
         <dependency>
             <groupId>com.evolvedbinary.j8fu</groupId>

@@ -7,6 +7,10 @@ Built for a workshop given by Adam Retter at Declarative Amsterdam 2025.
 
 Open API Specification for the Web API is here: https://app.swaggerhub.com/apis/evolvedbinary/dasp-xforms-api/1.0.0
 
+**NOTE**: About branches:
+1. `main` branch complains a template project to be completed in the workshop.
+2. `complete` branch contains an example fo the finished project.
+
 ## Compiling
 
 ```shell
